@@ -1,0 +1,150 @@
+
+
+        <main class="main" >
+            <section class="form-div">
+
+               
+
+                <header class="header-div">
+                    <h1 class="header-label">Add Group Action</h1>
+                    
+                </header>
+                <form class="user_form container">
+
+                    
+                    <div class="row mt-4 gx-5">
+                        <div class="col-md-4 mt-auto" >
+                            <label
+                            for="user-Fname"
+                            class="form-label user__font fw-bold"
+                            >Group Name</label
+                            >
+                            
+                            <input
+                            type="text"
+                            class="form-control user__font"
+                            placeholder="Group Name"
+                            disabled
+                            value="{{name}}"
+                            
+                            id="user-Fname"
+                            name="firstName"
+                           
+                            
+                            />
+                            
+                        </div>
+                        
+                       
+                        
+                        <div class="col-md-4 mt-auto" >
+                            <label
+                            for="user-group"
+                            class="form-label user__font fw-bold"
+                            >Menus</label
+                            >
+                            <select name="userType" [(ngModel)]="menuActionGroupRelation.menuId"     id="user-userType" class="form-control user__font">
+                                <option value="1">--Select--</option>
+                                <option *ngFor = "let ser of menusData"  [ngValue]="ser.menuId">
+                                    {{ser.name}}
+                                </option>
+                               
+                              
+                            </select>
+                            
+                        </div>
+
+
+
+                    </div>  
+                    <div class="row mt-4 gx-5">
+                        <label
+                        for="user-gr"
+                        class="form-label user__font fw-bold"
+                        >Supported Actions</label>
+
+                        <div class="col-md-2 mt-auto" >
+                           
+                            
+                            <input class="check__space" value="CREATE" type="checkbox"
+                             id="createId" checked="checked" name="checked_services" >CREATE
+                           
+                            
+                        </div>
+                        <div class="col-md-2 mt-auto" >
+                           
+                            
+                            <input class="check__space" value="UPDATE" type="checkbox" 
+                             id="updateId" checked="checked" name="checked_services" >UPDATE
+                            
+                        </div>
+                        <div class="col-md-2 mt-auto" >
+                           
+                            <input class="check__space" value="DELETE" type="checkbox" 
+                            id="deleteId" checked="checked" name="checked_services" >DELETE
+                            
+                        </div>
+                        <div class="col-md-2 mt-auto" >
+                           
+                            
+                            <input class="check__space" value="VIEW" type="checkbox" 
+                            id="viewId" checked="checked" name="checked_services" >VIEW
+                            
+                        </div>
+                        
+
+
+                    </div>
+                  
+
+                    
+                    <div class=" mt-5">
+                        <input type="submit" value="Add Action" class="btn btn-active" id="add_user" (click) = "submit()"/>
+                        
+                    </div>
+
+
+                    <header class="header-div">
+                        <h1 class="header-label">Existing Menus</h1>
+                        
+                    </header>
+
+                    <table datatable *ngIf="showContent" [dtTrigger]="dtTrigger"  class="table d__Table" >
+                        <thead>
+                          <tr class="heady">
+                            <th>Sr. #</th>
+                            <th>Menu Name</th>
+                            <th>Menu Permissions</th>
+                            <th>Action</th>
+                          </tr>
+                        
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let citi of exisitngMenuRelation; let i = index" class="dbody">
+                                <td>{{ i + 1}}</td>
+                                <td>{{ citi.name }}</td>
+                                <td>{{ citi.permission }}</td>
+                              
+                                <td>
+                                    <button class="btn"><i class='fa fa-edit' style='font-size:20px;color: green;' ></i></button>
+                                    <button class="btn"><i class="fa fa-trash"style='font-size:20px;color:red' ></i></button>
+                                    </td>
+                        
+                            </tr>
+
+                            
+                        </tbody>
+                      </table>
+
+                    
+                </form>
+
+
+
+
+
+
+
+            </section>
+
+        </main>
